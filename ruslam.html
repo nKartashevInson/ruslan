@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Руслан Сопов | Стендап-комик</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
+            },
+            colors: {
+              noir: {
+                900: "#0a0a0a",
+                800: "#171717",
+                700: "#262626",
+                text: "#e5e5e5",
+                muted: "#a3a3a3",
+                accent: "#8b0000",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      .mourning-ribbon-container {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mourning-ribbon {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        width: 120px;
+        height: 120px;
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      .mourning-ribbon::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 28px;
+        background-color: #050505;
+        box-shadow:
+          0 0 15px rgba(255, 255, 255, 0.05),
+          0 4px 10px rgba(0, 0, 0, 0.8);
+        transform: rotate(-45deg);
+        bottom: 35px;
+        right: -45px;
+        border-top: 1px solid rgba(255, 255, 255, 1);
+        border-bottom: 1px solid rgba(255, 255, 255, 1);
+      }
+
+      .noir-photo {
+        filter: grayscale(100%) contrast(120%) brightness(90%);
+        transition:
+          filter 0.5s ease,
+          transform 0.5s ease;
+      }
+
+      .noir-photo:hover {
+        filter: grayscale(80%) contrast(110%) brightness(100%);
+        transform: scale(1.02);
+      }
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+          transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      ::selection {
+        background: #e5e5e5;
+        color: #0a0a0a;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-noir-900 text-noir-text font-sans antialiased overflow-x-hidden selection:bg-white selection:text-black"
+  >
+    <div class="noise-overlay"></div>
+
+    <nav
+      class="fixed w-full top-0 z-40 bg-noir-900/80 backdrop-blur-md border-b border-white/5 mix-blend-difference"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center"
+      >
+        <div class="font-serif text-lg tracking-widest uppercase text-white/90">
+          Сопов
+        </div>
+        <a
+          href="tel:+998974459509"
+          class="font-sans text-sm tracking-wider hover:text-white transition-colors duration-300"
+        >
+          +998 97 445 95 09
+        </a>
+      </div>
+    </nav>
+
+    <section class="min-h-screen pt-32 pb-20 px-6 flex items-center relative">
+      <div
+        class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+      >
+        <div class="lg:col-span-7 flex flex-col justify-center z-10 fade-up">
+          <p
+            class="text-noir-muted tracking-[0.3em] uppercase text-sm mb-6 border-l-px pl-4 border-white/20"
+          >
+            Стендап-комик • 30 лет
+          </p>
+
+          <h1
+            class="font-serif text-6xl md:text-8xl lg:text-[7rem] leading-none mb-8 tracking-tight"
+          >
+            Руслан<br />
+            <span class="text-white/40 italic">Сопов.</span>
+          </h1>
+
+          <div class="h-px w-24 bg-white/20 mb-8"></div>
+
+          <p
+            class="font-serif text-3xl md:text-4xl text-white/90 leading-tight mb-12"
+          >
+            Свадьба,<br />
+            корпоративы,<br />
+            <span class="text-white border-b border-white/30 pb-1"
+              >поминки.</span
+            >
+          </p>
+
+          <div>
+            <a
+              href="#contact"
+              class="inline-block border border-white/30 px-8 py-4 font-sans text-sm tracking-widest uppercase hover:bg-white hover:text-noir-900 transition-all duration-500"
+            >
+              Пригласить
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 fade-up" style="transition-delay: 0.2s">
+          <div
+            class="relative w-full max-w-[500px] mx-auto lg:ml-auto p-4 border border-white/10 bg-noir-800/50 shadow-2xl"
+          >
+            <div
+              class="mourning-ribbon-container aspect-square bg-noir-900 z-10 relative"
+            >
+              <img
+                src="./ruslan.jpg"
+                alt="Руслан Сопов"
+                class="w-full h-full object-cover noir-photo"
+              />
+              <div class="mourning-ribbon"></div>
+            </div>
+
+            <div
+              class="absolute -bottom-8 right-0 font-serif text-sm text-noir-muted italic"
+            >
+              Атмосферно. Дорого. Навсегда.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-32 px-6 bg-noir-800/30 border-t border-white/5 relative">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="font-serif text-4xl md:text-5xl mb-16 text-center fade-up">
+          Мероприятия
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="border border-white/10 p-10 hover:bg-white/5 transition-colors duration-500 group fade-up"
+            style="transition-delay: 0.1s"
+          >
+            <div
+              class="text-3xl font-serif mb-6 text-white/50 group-hover:text-white transition-colors duration-500"
+            >
+              I.
+            </div>
+            <h3 class="text-2xl font-serif mb-4">Свадьба</h3>
+            <p class="text-noir-muted font-light leading-relaxed">
+              Изящный юмор без пошлости. Сделаю так, чтобы в этот день плакала
+              только невеста. И исключительно от смеха и счастья.
+            </p>
+          </div>
+
+          <div
+            class="border border-white/10 p-10 hover:bg-white/5 transition-colors duration-500 group fade-up"
+            style="transition-delay: 0.2s"
+          >
+            <div
+              class="text-3xl font-serif mb-6 text-white/50 group-hover:text-white transition-colors duration-500"
+            >
+              II.
+            </div>
+            <h3 class="text-2xl font-serif mb-4">Корпоратив</h3>
+            <p class="text-noir-muted font-light leading-relaxed">
+              Шутки про дедлайны и тимбилдинги, за которые вас не уволит HR.
+              Подниму боевой дух коллектива перед квартальным отчетом.
+            </p>
+          </div>
+
+          <div
+            class="border border-white/10 p-10 bg-noir-900/50 hover:bg-white/5 transition-colors duration-500 group fade-up relative overflow-hidden"
+            style="transition-delay: 0.3s"
+          >
+            <div
+              class="text-3xl font-serif mb-6 text-white/50 group-hover:text-white transition-colors duration-500"
+            >
+              III.
+            </div>
+            <h3 class="text-2xl font-serif mb-4">Поминки</h3>
+            <p class="text-noir-muted font-light leading-relaxed">
+              Эксклюзивный тариф. Провожаем с достоинством и легкой улыбкой. Тот
+              самый случай, когда черный юмор действительно уместен.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-32 px-6 relative">
+      <div class="max-w-4xl mx-auto text-center fade-up">
+        <div class="text-6xl font-serif text-white/10 mb-8">"</div>
+        <p
+          class="font-serif text-2xl md:text-3xl leading-relaxed text-white/80 mb-10"
+        >
+          Моя задача — не просто рассмешить. Моя задача — сделать так, чтобы вы
+          забыли о своих проблемах хотя бы на тот час, пока я на сцене. Если не
+          получится — верну деньги. Шучу, не верну.
+        </p>
+        <div
+          class="text-noir-muted tracking-widest uppercase text-sm font-sans"
+        >
+          — Руслан, 30 лет. Ни о чем не жалеет.
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="contact"
+      class="py-32 px-6 border-t border-white/10 bg-noir-800"
+    >
+      <div
+        class="max-w-7xl mx-auto flex flex-col items-center text-center fade-up"
+      >
+        <h2 class="font-serif text-5xl md:text-7xl mb-12">Связь.</h2>
+        <p class="text-xl text-noir-muted mb-12 font-light max-w-lg">
+          Готовы обсудить дату? Звоните или пишите в мессенджеры. Отвечаю
+          быстро, выступаю стильно.
+        </p>
+
+        <a
+          href="tel:+998974459509"
+          class="text-4xl md:text-6xl font-serif hover:text-white/60 transition-colors duration-300 mb-16 inline-block"
+        >
+          +998 97 445 95 09
+        </a>
+
+        <div
+          class="w-full border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-noir-muted font-sans tracking-wider"
+        >
+          <div class="mb-4 md:mb-0">
+            &copy; 2026 Руслан Сопов. Все права защищены.
+          </div>
+          <div>Ташкент, Узбекистан</div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.15,
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        const fadeElements = document.querySelectorAll(".fade-up");
+        fadeElements.forEach((el) => {
+          observer.observe(el);
+        });
+
+        setTimeout(() => {
+          document
+            .querySelectorAll("section:first-of-type .fade-up")
+            .forEach((el) => {
+              el.classList.add("visible");
+            });
+        }, 100);
+      });
+    </script>
+  </body>
+</html>
